@@ -8,17 +8,16 @@
 		var keywords =	''
 
 		var r = SyntaxHighlighter.regexLib;
-		
+
 		this.regexList = [
-			{ regex: r.multiLineDoubleQuotedString,					css: 'string' },			// double quoted strings
-			{ regex: r.multiLineSingleQuotedString,					css: 'string' },			// single quoted strings
-			{ regex: r.singleLinePerlComments,							css: 'comments' },			// one line comments
-      { regex: r.url,                                 css: 'links' }, 
-      { regex: /([\.=]{1})/gm,                           css: 'operators' },
-      { regex: /^\s*([^=\#]+)/gm,                     css: 'keyword' },
-      { regex: /([0-9]+)/gm,                          css: 'constants' }
+      { regex: /([\.=\:])/gm,                         css: 'operators bold' },
+      { regex: /^\s*(.*)(?=[^\\][\:|\=]{1})/gm,                css: 'keyword' },
+      { regex: /^\s*([\S]+)(?=[ ].*)/gm,              css: 'keyword' },
+			{ regex: r.singleLinePerlComments,							css: 'comments' },
+      { regex: /^(!.*)$/gm,                           css: 'comments' },
+      { regex: /((\\u)?[0-9]+)/gm,                    css: 'constants' }
 			];
-	
+
 		this.forHtmlScript(r.scriptScriptTags);
 	};
 
